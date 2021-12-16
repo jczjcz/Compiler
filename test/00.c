@@ -1,2 +1,5 @@
-int a=0;
-int b=1;
+const int a = 1;
+int b=a;
+
+
+

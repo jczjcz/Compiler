@@ -14,28 +14,28 @@ using std::deque;
 
 const int INTSIZE = 4;      //INT型长度
 
-enum TokenType {
+enum TokenType {       //Token的种类
     IntType,
     ArrayType,
     FuncType,
     VoidType,
 };
 
-enum RetType {
+enum RetType {        //返回类型
     RetVoid,
     RetInt,
 };
 
-class Token;
-class IdentToken;
-class IntIdentToken;
-class ArrayIdentToken;
-class FuncIdentToken;
+class Token;          //创建Token类型
+class IdentToken;       //表示Ident型Token
+class IntIdentToken;      //表示INT型Token
+class ArrayIdentToken;    //表示数组型Token
+class FuncIdentToken;       //表示函数型Token
 
 // The general token class
 // Type: token type
 class Token {
-    TokenType type;
+    TokenType type;      //Token类型
 public:
     Token(TokenType);
     TokenType Type() const;
@@ -45,7 +45,7 @@ public:
 // Name: name of the identifier
 // TokenType: either int or array
 // is_const: whether it is a constant
-// is_param: is this a parameter or a global variable
+// is_param: is this a parameter or a global variable   参数或者是全局变量
 class IdentToken: public Token {
 protected:
     bool is_c, is_p, is_t, s_assign;
@@ -103,11 +103,11 @@ public:
 // vals: flatten the array into an one-dim array
 // dim: dimension
 class ArrayIdentToken: public IdentToken {
-    deque<int> shape;
-    deque<int> vals;
+    deque<int> shape;    // 用来存储array的维度
+    deque<int> vals;     // 变成1维后各个位置的值
     deque<IntIdentToken*> tokens;
     int dim;
-    friend class ArrayOperator;
+    friend class ArrayOperator;   //数组操作符
 public:
     ArrayIdentToken(const string&, bool, bool=false, bool=false);
     void setShape(deque<int>&);

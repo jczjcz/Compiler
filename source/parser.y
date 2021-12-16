@@ -3,7 +3,7 @@
 #define YYSTYPE void*
 
 // shorthand for taking int value from a void*
-#define V(p) (*((int*)(p)))
+#define V(p) (*((int*)(p)))     //将p强制转换成指向int的指针，然后得到这个int的值
 
 // Common headers
 #include <iostream>
@@ -64,28 +64,61 @@ ConstDefs: ConstDef
 ConstDef: IDENT ASSIGN ConstInitVal
 {
     auto name = *(string*)$1;
-    auto oldcid = nowScope->findOne(name);
+    auto oldcid = nowScope->findOne(name);       
 
-    if(oldcid != nullptr){
+    if(oldcid != nullptr){     //在变量表中已经出现过
         string errmsg = "\"";
         errmsg += name;
         errmsg += "\" already defined in this scope.";
         yyerror(errmsg);
     }
 
-    auto cid = new IntIdentToken(name, true);  //const
+    auto cid = new IntIdentToken(name, true);  //const   新建一个节点
     cid->setVal(V($3));
-    nowScope->addToken(cid);
+    nowScope->addToken(cid);     //在当前的scope中增加一个节点
 }
 ;
 
 ConstInitVal: ConstExp
+{
+    auto cid = (IntIdentToken*)$1;
+    if(!cid->isConst()){
+        yyerror("Excepting constant expression.");
+    }
+    $$ = new int(cid->Val());
+}
 ;
 
 ConstExp: AddExp
 ;
 
 AddExp: MulExp
+    |  AddExp ADD MulExp
+{
+    auto c1 = (IntIdentToken*)$1, c2 = (IntIdentToken*)$3;
+    if(*c1 && *c2){
+        $$ = new IntIdentToken(c1->Val() + c2->Val());
+    }
+    else{
+        auto newcid = new IntIdentToken();
+        out << newcid->Declare() << endl;
+        out << newcid->getName() << " = " << c1->getName() << " + " << c2->getName() << endl;
+        $$ = newcid;
+    }
+}
+    | AddExp SUB MulExp
+{
+    auto c1 = (IntIdentToken*)$1, c2 = (IntIdentToken*)$3;
+    if(*c1 && *c2){
+        $$ = new IntIdentToken(c1->Val() - c2->Val());
+    }
+    else{
+        auto newcid = new IntIdentToken();
+        out << newcid->Declare() << endl;
+        out << newcid->getName() << " = " << c1->getName() << " - " << c2->getName() << endl;
+        $$ = newcid;
+    }
+}
 ;
 
 MulExp: UnaryExp
@@ -97,6 +130,21 @@ UnaryExp: PrimaryExp
 PrimaryExp: NUMBER
 {
     $$ = new IntIdentToken(V($1));
+}
+    |   LPAREN Exp RPAREN
+{
+    $$ = $2;
+}
+    |   LVal
+{
+    auto cid = (IntIdentToken*) $1;
+    if(cid->isSlice()){         // 注意数组元素在右边不能直接用
+        /*例如var T1=a[2] T2 = T1+2*/
+        auto newcid = new IntIdentToken();
+        out << newcid->getName() << " = " << cid->getName() << endl;
+        cid = newcid; 
+    }
+    $$ = cid;
 }
 ;
 
@@ -171,8 +219,26 @@ InitVal: Exp
 Exp: AddExp
 ;
 
+LVal: IDENT
+{
+    auto name = *(string*) $1;
+    auto cid = (IdentToken*)nowScope->findAll(name);   // 用变量进行运算，只需要有一个域包含即可
 
+    if(cid == nullptr){
+        string errmsg = "\"";
+        errmsg += name;
+        errmsg += "\" undifined in this scope.";
+        yyerror(errmsg);
+    }
 
+    if(cid->Type() != IntType){
+        yyerror("Int identifier required.");
+    }
+    cid = (IntIdentToken*)cid;
+
+    $$ = cid;
+}
+;
 
 %%
 
