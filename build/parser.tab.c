@@ -466,7 +466,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  11
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   57
+#define YYLAST   50
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  38
@@ -475,7 +475,7 @@ union yyalloc
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  40
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  67
+#define YYNSTATES  68
 
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
@@ -526,10 +526,10 @@ static const yytype_uint8 yytranslate[] =
 static const yytype_uint16 yyrline[] =
 {
        0,    49,    49,    50,    53,    54,    57,    60,    61,    64,
-      81,    80,   110,   116,   123,   129,   136,   135,   149,   150,
-     153,   163,   166,   167,   180,   195,   196,   209,   225,   240,
-     243,   247,   251,   264,   267,   268,   271,   289,   322,   332,
-     335
+      82,    81,   111,   117,   124,   130,   137,   136,   150,   151,
+     154,   157,   167,   168,   181,   196,   197,   210,   226,   241,
+     244,   249,   253,   266,   269,   270,   273,   291,   324,   334,
+     337
 };
 #endif
 
@@ -562,10 +562,10 @@ static const yytype_uint16 yytoknum[] =
 };
 # endif
 
-#define YYPACT_NINF -53
+#define YYPACT_NINF -51
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-53)))
+  (!!((Yystate) == (-51)))
 
 #define YYTABLE_NINF -1
 
@@ -576,13 +576,13 @@ static const yytype_uint16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-       2,    19,    23,     8,   -53,   -53,   -53,     6,    -3,   -53,
-      32,   -53,   -53,    -4,   -53,    19,    -7,    -6,   -53,   -53,
-      -4,   -53,    31,     9,   -53,   -53,   -53,   -53,   -53,   -53,
-      -4,    -4,    28,   -53,   -53,    33,    -4,    -4,    -4,    -4,
-      -4,    30,    31,   -53,   -53,    -4,    12,   -53,     9,     9,
-     -53,   -53,   -53,   -53,    34,    -8,   -53,    35,   -53,   -53,
-     -53,    -8,   -53,    -5,   -53,    -8,   -53
+      -2,     3,    17,     7,   -51,   -51,   -51,     1,   -14,   -51,
+      32,   -51,   -51,    -4,   -51,     3,    -7,     4,   -51,   -51,
+      -4,   -51,    24,    12,   -51,   -51,   -51,   -51,   -51,   -51,
+      -4,    -4,    28,   -51,    32,    33,    -4,    -4,    -4,    -4,
+      -4,    30,    24,   -51,   -51,    -4,     9,   -51,   -51,    12,
+      12,   -51,   -51,   -51,   -51,    31,    -8,   -51,    34,   -51,
+     -51,   -51,    -8,   -51,   -10,   -51,    -8,   -51
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -593,25 +593,25 @@ static const yytype_uint8 yydefact[] =
        0,     0,     0,     0,     2,     4,     5,    36,     0,    35,
        0,     1,     3,     0,    33,     0,     0,     0,     7,    40,
        0,    30,    39,    22,    25,    29,    37,    38,    32,    34,
-       0,     0,    10,     6,     8,     0,     0,     0,     0,     0,
-       0,     0,    21,     9,    20,     0,     0,    31,    23,    24,
-      26,    27,    28,    13,     0,     0,    12,    16,    11,    14,
-      15,     0,    19,     0,    17,     0,    18
+       0,     0,    10,     6,     0,     0,     0,     0,     0,     0,
+       0,     0,    21,     9,    20,     0,     0,     8,    31,    23,
+      24,    26,    27,    28,    13,     0,     0,    12,    16,    11,
+      14,    15,     0,    19,     0,    17,     0,    18
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -53,   -53,    39,   -53,   -53,    29,   -53,   -53,   -52,   -53,
-     -53,   -53,   -20,    -1,     0,   -18,   -53,   -53,   -53,    36,
-     -53,    37,   -53
+     -51,   -51,    44,   -51,   -51,    14,   -51,   -51,   -50,   -51,
+     -51,   -51,   -21,    -5,    -6,    -3,   -51,   -51,   -51,    35,
+     -51,    29,   -51
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     3,     4,     5,    17,    18,    46,    32,    58,    61,
-      63,    43,    59,    42,    23,    24,    25,     6,     8,     9,
+      -1,     3,     4,     5,    17,    18,    46,    32,    59,    62,
+      64,    43,    60,    42,    23,    24,    25,     6,     8,     9,
       26,    27,    28
 };
 
@@ -620,22 +620,22 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-      19,    20,    16,    57,    19,    20,    30,    64,    11,    62,
-      41,    44,    22,    66,    38,    39,    40,     1,     2,    22,
-      50,    51,    52,     1,     2,    54,    31,     7,    33,    21,
-      65,    14,    15,    21,    36,    37,    48,    49,    10,    13,
-      16,    45,    12,    47,    53,    55,    34,    60,    56,     0,
-       0,    29,     0,     0,     0,     0,     0,    35
+      19,    20,    65,    58,    19,    20,    30,    11,    22,    41,
+      44,     7,    63,     1,     2,    22,    67,    38,    39,    40,
+      14,    15,     1,     2,    55,    66,    31,    36,    37,    21,
+      49,    50,    10,    21,    13,    51,    52,    53,    33,    34,
+      16,    45,    56,    48,    54,    57,    61,    12,    47,    35,
+      29
 };
 
-static const yytype_int8 yycheck[] =
+static const yytype_uint8 yycheck[] =
 {
-       8,     9,     8,    11,     8,     9,    13,    12,     0,    61,
-      30,    31,    13,    65,     5,     6,     7,    15,    16,    20,
-      38,    39,    40,    15,    16,    45,    33,     8,    34,    37,
-      35,    34,    35,    37,     3,     4,    36,    37,    15,    33,
-       8,    13,     3,    10,    14,    33,    17,    12,    14,    -1,
-      -1,    15,    -1,    -1,    -1,    -1,    -1,    20
+       8,     9,    12,    11,     8,     9,    13,     0,    13,    30,
+      31,     8,    62,    15,    16,    20,    66,     5,     6,     7,
+      34,    35,    15,    16,    45,    35,    33,     3,     4,    37,
+      36,    37,    15,    37,    33,    38,    39,    40,    34,    35,
+       8,    13,    33,    10,    14,    14,    12,     3,    34,    20,
+      15
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -645,10 +645,10 @@ static const yytype_uint8 yystos[] =
        0,    15,    16,    39,    40,    41,    55,     8,    56,    57,
       15,     0,    40,    33,    34,    35,     8,    42,    43,     8,
        9,    37,    51,    52,    53,    54,    58,    59,    60,    57,
-      13,    33,    45,    34,    43,    59,     3,     4,     5,     6,
-       7,    50,    51,    49,    50,    13,    44,    10,    52,    52,
-      53,    53,    53,    14,    50,    33,    14,    11,    46,    50,
-      12,    47,    46,    48,    12,    35,    46
+      13,    33,    45,    34,    35,    59,     3,     4,     5,     6,
+       7,    50,    51,    49,    50,    13,    44,    43,    10,    52,
+      52,    53,    53,    53,    14,    50,    33,    14,    11,    46,
+      50,    12,    47,    46,    48,    12,    35,    46
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
@@ -664,7 +664,7 @@ static const yytype_uint8 yyr1[] =
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     1,     2,     1,     1,     4,     1,     2,     3,
+       0,     2,     1,     2,     1,     1,     4,     1,     3,     3,
        0,     5,     4,     3,     1,     2,     0,     4,     3,     1,
        1,     1,     1,     3,     3,     1,     3,     3,     3,     1,
        1,     3,     1,     3,     3,     1,     1,     3,     1,     1,
@@ -1347,6 +1347,7 @@ yyreduce:
         case 9:
 #line 65 "source/parser.y" /* yacc.c:1646  */
     {
+    //out << "ConstDef IDENT ASSIGN ConstInitVal = " << V($3) <<endl;
     auto name = *(string*)(yyvsp[-2]);        //得到变量名
     auto oldcid = nowScope->findOne(name);         //查找变量在当前域中是否出现过
 
@@ -1361,11 +1362,11 @@ yyreduce:
     cid->setVal(V((yyvsp[0])));              //当前INT节点的值为$3
     nowScope->addToken(cid);     //在当前的scope中增加一个节点，得到当前节点的scope
 }
-#line 1365 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1366 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 81 "source/parser.y" /* yacc.c:1646  */
+#line 82 "source/parser.y" /* yacc.c:1646  */
     {          /* 例如a[2][3] = {1,2,3,4,5,6}  */
     auto name = *(string*)(yyvsp[-1]);
     auto oldcid = nowScope->findOne(name);
@@ -1381,15 +1382,15 @@ yyreduce:
     cid->setShape(*(deque<int>*)(yyvsp[0]));
     nowScope->addToken(cid);
 
-    out << cid->Declare()<<endl;
+    out << cid->Declare()<<endl;     //输出数组变量声明部分
 
     arrOp_assign.setTarget(cid);      //用于操作数组，把目标对象设置为当前的cid
 }
-#line 1389 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1390 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 101 "source/parser.y" /* yacc.c:1646  */
+#line 102 "source/parser.y" /* yacc.c:1646  */
     {
     string &arrName = arrOp_assign.name();
     int n = arrOp_assign.size();
@@ -1397,82 +1398,82 @@ yyreduce:
         out <<arrName<<"["<<i*INTSIZE<<"] = "<<arrOp_assign[i]<<endl;
     }
 }
-#line 1401 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1402 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 111 "source/parser.y" /* yacc.c:1646  */
+#line 112 "source/parser.y" /* yacc.c:1646  */
     {   
     /*以[2][3][4]为例，deque的内容依次为2，3，4*/
     (yyval) = (yyvsp[-3]);
     ((deque<int>*)(yyval))->push_back(V((yyvsp[-1])));
 }
-#line 1411 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1412 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 117 "source/parser.y" /* yacc.c:1646  */
+#line 118 "source/parser.y" /* yacc.c:1646  */
     {
     (yyval) = new deque<int>;
     ((deque<int>*)(yyval))->push_back(V((yyvsp[-1])));
 }
-#line 1420 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1421 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 124 "source/parser.y" /* yacc.c:1646  */
+#line 125 "source/parser.y" /* yacc.c:1646  */
     {
     if(!arrOp_assign.addOne(V((yyvsp[0])))){
         yyerror("Array out of bound.");
     }
 }
-#line 1430 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1431 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 130 "source/parser.y" /* yacc.c:1646  */
+#line 131 "source/parser.y" /* yacc.c:1646  */
     {
     if(!arrOp_assign.jumpOne()){            // a[3][2] = {1,2,{},3,4}，直接跳过这一层，都赋成0
         yyerror("Nested list too deep.");
     }
 }
-#line 1440 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1441 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 136 "source/parser.y" /* yacc.c:1646  */
+#line 137 "source/parser.y" /* yacc.c:1646  */
     {
     if(!arrOp_assign.moveDown()){             // a[2][2] = {1,2,{3,4}},遇到左括号往下移一层
         yyerror("Nested list too deep.");
     }
 }
-#line 1450 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1451 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 142 "source/parser.y" /* yacc.c:1646  */
+#line 143 "source/parser.y" /* yacc.c:1646  */
     {
     if(!arrOp_assign.moveUp()){                 //遇到右括号向上移一层
         yyerror("Unknown error in \"}\"");
     }
 }
-#line 1460 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1461 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
-  case 20:
-#line 154 "source/parser.y" /* yacc.c:1646  */
+  case 21:
+#line 158 "source/parser.y" /* yacc.c:1646  */
     {
     auto cid = (IntIdentToken*)(yyvsp[0]);
-    if(!cid->isConst()){                  // 检查是否为const型
-        yyerror("Excepting constant expression.");
+    if (!cid->isConst()) {
+        yyerror("Expecting constant expression.");
     }
-    (yyval) = new int(cid->Val());       //生成int型指针，值为cid->Val
+    (yyval) = new int(cid->Val());
 }
-#line 1472 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1473 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 168 "source/parser.y" /* yacc.c:1646  */
+#line 169 "source/parser.y" /* yacc.c:1646  */
     {
     auto c1 = (IntIdentToken*)(yyvsp[-2]), c2 = (IntIdentToken*)(yyvsp[0]);
     if(*c1 && *c2){
@@ -1485,11 +1486,11 @@ yyreduce:
         (yyval) = newcid;      //得到中间结果
     }
 }
-#line 1489 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1490 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 181 "source/parser.y" /* yacc.c:1646  */
+#line 182 "source/parser.y" /* yacc.c:1646  */
     {
     auto c1 = (IntIdentToken*)(yyvsp[-2]), c2 = (IntIdentToken*)(yyvsp[0]);
     if(*c1 && *c2){
@@ -1502,11 +1503,11 @@ yyreduce:
         (yyval) = newcid;
     }
 }
-#line 1506 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1507 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 197 "source/parser.y" /* yacc.c:1646  */
+#line 198 "source/parser.y" /* yacc.c:1646  */
     {
     auto c1 = (IntIdentToken*)(yyvsp[-2]), c2 = (IntIdentToken*)(yyvsp[0]);
     if(*c1 && *c2){
@@ -1519,11 +1520,11 @@ yyreduce:
         (yyval) = newcid;
     }
 }
-#line 1523 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1524 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 210 "source/parser.y" /* yacc.c:1646  */
+#line 211 "source/parser.y" /* yacc.c:1646  */
     {
     auto c1 = (IntIdentToken*)(yyvsp[-2]), c2 = (IntIdentToken*)(yyvsp[0]);
     if(*c1 && *c2){
@@ -1539,11 +1540,11 @@ yyreduce:
         (yyval) = newcid;
     }
 }
-#line 1543 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1544 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 226 "source/parser.y" /* yacc.c:1646  */
+#line 227 "source/parser.y" /* yacc.c:1646  */
     {
         auto c1 = (IntIdentToken*)(yyvsp[-2]), c2 = (IntIdentToken*)(yyvsp[0]);
         if(*c1 && *c2){
@@ -1556,27 +1557,28 @@ yyreduce:
             (yyval) = newcid;
         }
     }
-#line 1560 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1561 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 244 "source/parser.y" /* yacc.c:1646  */
+#line 245 "source/parser.y" /* yacc.c:1646  */
     {
     (yyval) = new IntIdentToken(V((yyvsp[0])));     //生成一个Int型Token
+    //out <<"NUMBER = " << V($1) <<endl;
 }
-#line 1568 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1570 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 248 "source/parser.y" /* yacc.c:1646  */
+#line 250 "source/parser.y" /* yacc.c:1646  */
     {
     (yyval) = (yyvsp[-1]);
 }
-#line 1576 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1578 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 252 "source/parser.y" /* yacc.c:1646  */
+#line 254 "source/parser.y" /* yacc.c:1646  */
     {
     auto cid = (IntIdentToken*) (yyvsp[0]);
     if(cid->isSlice()){         // 注意数组元素在右边不能直接用
@@ -1587,11 +1589,11 @@ yyreduce:
     }
     (yyval) = cid;
 }
-#line 1591 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1593 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 272 "source/parser.y" /* yacc.c:1646  */
+#line 274 "source/parser.y" /* yacc.c:1646  */
     {
     auto name = *(string*) (yyvsp[0]);
     auto oldcid = nowScope->findOne(name);
@@ -1606,14 +1608,14 @@ yyreduce:
     auto cid = new IntIdentToken(name, false); //not const. Initially 0
     nowScope->addToken(cid);
 
-    out << cid->Declare() << endl;
-    out << cid->getName() << " = 0" << endl;
+    out << cid->Declare() << endl;       // 输出声明语句
+    out << cid->getName() << " = 0" << endl;      // 变量初始化为0
 }
-#line 1613 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1615 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 290 "source/parser.y" /* yacc.c:1646  */
+#line 292 "source/parser.y" /* yacc.c:1646  */
     {
     auto name = *(string*) (yyvsp[-2]);
     auto oldcid = nowScope->findOne(name);
@@ -1644,11 +1646,11 @@ yyreduce:
     }
     nowScope->addToken(cid);
 }
-#line 1648 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1650 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 323 "source/parser.y" /* yacc.c:1646  */
+#line 325 "source/parser.y" /* yacc.c:1646  */
     {
     auto cid = (IdentToken*) (yyvsp[0]);
     if(cid->Type() != IntType){
@@ -1656,11 +1658,11 @@ yyreduce:
     }
     (yyval) = cid;
 }
-#line 1660 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1662 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 336 "source/parser.y" /* yacc.c:1646  */
+#line 338 "source/parser.y" /* yacc.c:1646  */
     {
     auto name = *(string*) (yyvsp[0]);
     auto cid = (IdentToken*)nowScope->findAll(name);   // 用变量进行运算，只需要有一个域包含即可
@@ -1679,11 +1681,11 @@ yyreduce:
 
     (yyval) = cid;
 }
-#line 1683 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1685 "build/parser.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1687 "build/parser.tab.c" /* yacc.c:1646  */
+#line 1689 "build/parser.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1911,7 +1913,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 356 "source/parser.y" /* yacc.c:1906  */
+#line 358 "source/parser.y" /* yacc.c:1906  */
 
 
 void yyerror(const char *s) {

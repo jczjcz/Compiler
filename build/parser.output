@@ -32,7 +32,7 @@ Grammar
     5 ConstDecl: CONST INT ConstDefs SEMI
 
     6 ConstDefs: ConstDef
-    7          | ConstDefs ConstDef
+    7          | ConstDefs COMMA ConstDef
 
     8 ConstDef: IDENT ASSIGN ConstInitVal
 
@@ -123,7 +123,7 @@ CONT (286)
 RETURN (287)
 ASSIGN (288) 8 10 36
 SEMI (289) 5 32
-COMMA (290) 17 33
+COMMA (290) 7 17 33
 PERIOD (291)
 NUMBER (292) 29
 
@@ -340,12 +340,10 @@ State 16
 State 17
 
     5 ConstDecl: CONST INT ConstDefs . SEMI
-    7 ConstDefs: ConstDefs . ConstDef
+    7 ConstDefs: ConstDefs . COMMA ConstDef
 
-    IDENT  shift, and go to state 16
     SEMI   shift, and go to state 33
-
-    ConstDef  go to state 34
+    COMMA  shift, and go to state 34
 
 
 State 18
@@ -507,16 +505,18 @@ State 33
 
 State 34
 
-    7 ConstDefs: ConstDefs ConstDef .
+    7 ConstDefs: ConstDefs COMMA . ConstDef
 
-    $default  reduce using rule 7 (ConstDefs)
+    IDENT  shift, and go to state 16
+
+    ConstDef  go to state 47
 
 
 State 35
 
    30 PrimaryExp: LPAREN Exp . RPAREN
 
-    RPAREN  shift, and go to state 47
+    RPAREN  shift, and go to state 48
 
 
 State 36
@@ -527,7 +527,7 @@ State 36
     LPAREN  shift, and go to state 20
     NUMBER  shift, and go to state 21
 
-    MulExp      go to state 48
+    MulExp      go to state 49
     UnaryExp    go to state 24
     PrimaryExp  go to state 25
     LVal        go to state 28
@@ -541,7 +541,7 @@ State 37
     LPAREN  shift, and go to state 20
     NUMBER  shift, and go to state 21
 
-    MulExp      go to state 49
+    MulExp      go to state 50
     UnaryExp    go to state 24
     PrimaryExp  go to state 25
     LVal        go to state 28
@@ -555,7 +555,7 @@ State 38
     LPAREN  shift, and go to state 20
     NUMBER  shift, and go to state 21
 
-    UnaryExp    go to state 50
+    UnaryExp    go to state 51
     PrimaryExp  go to state 25
     LVal        go to state 28
 
@@ -568,7 +568,7 @@ State 39
     LPAREN  shift, and go to state 20
     NUMBER  shift, and go to state 21
 
-    UnaryExp    go to state 51
+    UnaryExp    go to state 52
     PrimaryExp  go to state 25
     LVal        go to state 28
 
@@ -581,7 +581,7 @@ State 40
     LPAREN  shift, and go to state 20
     NUMBER  shift, and go to state 21
 
-    UnaryExp    go to state 52
+    UnaryExp    go to state 53
     PrimaryExp  go to state 25
     LVal        go to state 28
 
@@ -590,7 +590,7 @@ State 41
 
    12 ArrayDim: LBRAC ConstExp . RBRAC
 
-    RBRAC  shift, and go to state 53
+    RBRAC  shift, and go to state 54
 
 
 State 42
@@ -627,7 +627,7 @@ State 45
     LPAREN  shift, and go to state 20
     NUMBER  shift, and go to state 21
 
-    ConstExp    go to state 54
+    ConstExp    go to state 55
     AddExp      go to state 42
     MulExp      go to state 23
     UnaryExp    go to state 24
@@ -639,17 +639,24 @@ State 46
 
    10 ConstDef: IDENT ArrayDim $@1 . ASSIGN ConstArrayVal
 
-    ASSIGN  shift, and go to state 55
+    ASSIGN  shift, and go to state 56
 
 
 State 47
+
+    7 ConstDefs: ConstDefs COMMA ConstDef .
+
+    $default  reduce using rule 7 (ConstDefs)
+
+
+State 48
 
    30 PrimaryExp: LPAREN Exp RPAREN .
 
     $default  reduce using rule 30 (PrimaryExp)
 
 
-State 48
+State 49
 
    22 AddExp: AddExp ADD MulExp .
    25 MulExp: MulExp . MUL UnaryExp
@@ -663,7 +670,7 @@ State 48
     $default  reduce using rule 22 (AddExp)
 
 
-State 49
+State 50
 
    23 AddExp: AddExp SUB MulExp .
    25 MulExp: MulExp . MUL UnaryExp
@@ -677,52 +684,52 @@ State 49
     $default  reduce using rule 23 (AddExp)
 
 
-State 50
+State 51
 
    25 MulExp: MulExp MUL UnaryExp .
 
     $default  reduce using rule 25 (MulExp)
 
 
-State 51
+State 52
 
    26 MulExp: MulExp DIV UnaryExp .
 
     $default  reduce using rule 26 (MulExp)
 
 
-State 52
+State 53
 
    27 MulExp: MulExp MOD UnaryExp .
 
     $default  reduce using rule 27 (MulExp)
 
 
-State 53
+State 54
 
    12 ArrayDim: LBRAC ConstExp RBRAC .
 
     $default  reduce using rule 12 (ArrayDim)
 
 
-State 54
+State 55
 
    11 ArrayDim: ArrayDim LBRAC ConstExp . RBRAC
 
-    RBRAC  shift, and go to state 56
+    RBRAC  shift, and go to state 57
 
 
-State 55
+State 56
 
    10 ConstDef: IDENT ArrayDim $@1 ASSIGN . ConstArrayVal
 
     IDENT   shift, and go to state 19
     LPAREN  shift, and go to state 20
-    LCURLY  shift, and go to state 57
+    LCURLY  shift, and go to state 58
     NUMBER  shift, and go to state 21
 
-    ConstArrayVal  go to state 58
-    ConstExp       go to state 59
+    ConstArrayVal  go to state 59
+    ConstExp       go to state 60
     AddExp         go to state 42
     MulExp         go to state 23
     UnaryExp       go to state 24
@@ -730,58 +737,58 @@ State 55
     LVal           go to state 28
 
 
-State 56
+State 57
 
    11 ArrayDim: ArrayDim LBRAC ConstExp RBRAC .
 
     $default  reduce using rule 11 (ArrayDim)
 
 
-State 57
+State 58
 
    14 ConstArrayVal: LCURLY . RCURLY
    16              | LCURLY . $@2 ConstArrayVals RCURLY
 
-    RCURLY  shift, and go to state 60
+    RCURLY  shift, and go to state 61
 
     $default  reduce using rule 15 ($@2)
 
-    $@2  go to state 61
+    $@2  go to state 62
 
 
-State 58
+State 59
 
    10 ConstDef: IDENT ArrayDim $@1 ASSIGN ConstArrayVal .
 
     $default  reduce using rule 10 (ConstDef)
 
 
-State 59
+State 60
 
    13 ConstArrayVal: ConstExp .
 
     $default  reduce using rule 13 (ConstArrayVal)
 
 
-State 60
+State 61
 
    14 ConstArrayVal: LCURLY RCURLY .
 
     $default  reduce using rule 14 (ConstArrayVal)
 
 
-State 61
+State 62
 
    16 ConstArrayVal: LCURLY $@2 . ConstArrayVals RCURLY
 
     IDENT   shift, and go to state 19
     LPAREN  shift, and go to state 20
-    LCURLY  shift, and go to state 57
+    LCURLY  shift, and go to state 58
     NUMBER  shift, and go to state 21
 
-    ConstArrayVal   go to state 62
-    ConstArrayVals  go to state 63
-    ConstExp        go to state 59
+    ConstArrayVal   go to state 63
+    ConstArrayVals  go to state 64
+    ConstExp        go to state 60
     AddExp          go to state 42
     MulExp          go to state 23
     UnaryExp        go to state 24
@@ -789,40 +796,40 @@ State 61
     LVal            go to state 28
 
 
-State 62
+State 63
 
    18 ConstArrayVals: ConstArrayVal .
 
     $default  reduce using rule 18 (ConstArrayVals)
 
 
-State 63
+State 64
 
    16 ConstArrayVal: LCURLY $@2 ConstArrayVals . RCURLY
    17 ConstArrayVals: ConstArrayVals . COMMA ConstArrayVal
 
-    RCURLY  shift, and go to state 64
-    COMMA   shift, and go to state 65
+    RCURLY  shift, and go to state 65
+    COMMA   shift, and go to state 66
 
 
-State 64
+State 65
 
    16 ConstArrayVal: LCURLY $@2 ConstArrayVals RCURLY .
 
     $default  reduce using rule 16 (ConstArrayVal)
 
 
-State 65
+State 66
 
    17 ConstArrayVals: ConstArrayVals COMMA . ConstArrayVal
 
     IDENT   shift, and go to state 19
     LPAREN  shift, and go to state 20
-    LCURLY  shift, and go to state 57
+    LCURLY  shift, and go to state 58
     NUMBER  shift, and go to state 21
 
-    ConstArrayVal  go to state 66
-    ConstExp       go to state 59
+    ConstArrayVal  go to state 67
+    ConstExp       go to state 60
     AddExp         go to state 42
     MulExp         go to state 23
     UnaryExp       go to state 24
@@ -830,7 +837,7 @@ State 65
     LVal           go to state 28
 
 
-State 66
+State 67
 
    17 ConstArrayVals: ConstArrayVals COMMA ConstArrayVal .
 

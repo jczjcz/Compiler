@@ -58,11 +58,12 @@ ConstDecl: CONST INT ConstDefs SEMI
 ;
 
 ConstDefs: ConstDef 
-    |   ConstDefs ConstDef
+    |   ConstDefs COMMA ConstDef
 ;
 
 ConstDef: IDENT ASSIGN ConstInitVal
 {
+    //out << "ConstDef IDENT ASSIGN ConstInitVal = " << V($3) <<endl;
     auto name = *(string*)$1;        //得到变量名
     auto oldcid = nowScope->findOne(name);         //查找变量在当前域中是否出现过
 
@@ -93,7 +94,7 @@ ConstDef: IDENT ASSIGN ConstInitVal
     cid->setShape(*(deque<int>*)$2);
     nowScope->addToken(cid);
 
-    out << cid->Declare()<<endl;
+    out << cid->Declare()<<endl;     //输出数组变量声明部分
 
     arrOp_assign.setTarget(cid);      //用于操作数组，把目标对象设置为当前的cid
 }
@@ -151,16 +152,16 @@ ConstArrayVals: ConstArrayVals COMMA ConstArrayVal
 ;
 
 ConstInitVal: ConstExp
-{
-    auto cid = (IntIdentToken*)$1;
-    if(!cid->isConst()){                  // 检查是否为const型
-        yyerror("Excepting constant expression.");
-    }
-    $$ = new int(cid->Val());       //生成int型指针，值为cid->Val
-}
 ;
 
 ConstExp: AddExp
+{
+    auto cid = (IntIdentToken*)$1;
+    if (!cid->isConst()) {
+        yyerror("Expecting constant expression.");
+    }
+    $$ = new int(cid->Val());
+}
 ;
 
 AddExp: MulExp
@@ -243,6 +244,7 @@ UnaryExp: PrimaryExp
 PrimaryExp: NUMBER
 {
     $$ = new IntIdentToken(V($1));     //生成一个Int型Token
+    //out <<"NUMBER = " << V($1) <<endl;
 }
     |   LPAREN Exp RPAREN
 {
@@ -283,8 +285,8 @@ VarDef: IDENT
     auto cid = new IntIdentToken(name, false); //not const. Initially 0
     nowScope->addToken(cid);
 
-    out << cid->Declare() << endl;
-    out << cid->getName() << " = 0" << endl;
+    out << cid->Declare() << endl;       // 输出声明语句
+    out << cid->getName() << " = 0" << endl;      // 变量初始化为0
 }
     |   IDENT ASSIGN InitVal
 {
