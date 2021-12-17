@@ -112,12 +112,12 @@ ConstArrayVal:  ConstExp
     }
     | LCURLY RCURLY
     {
-        if (!arrOp_assign.jumpOne())
+        if (!arrOp_assign.jumpOne())    // a[3][2] = {1,2,{},3,4}
             yyerror("Nested list too deep.");
     }
     | LCURLY
     {
-        if (!arrOp_assign.moveDown())
+        if (!arrOp_assign.moveDown())    // a[2][2] = {1,2,{3,4}}
             yyerror("Nested list too deep.");
     }
     ConstArrayVals RCURLY

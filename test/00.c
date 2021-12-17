@@ -1,5 +1,6 @@
-const int a = 1;
-int b=a;
+int a;
+const int b[2];
+
 
 
 
